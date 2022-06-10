@@ -39,6 +39,10 @@ public class CardService {
 		Card tarjeta = tarjetaRepositorio.findByCardNumber(numeroTarjeta);
 		boolean esPinValido = false;
 		
+		if(tarjeta == null) {
+			throw new AtmExeption("La tarjeta no existe");
+		}
+		
 		if(pinTarjeta.equals(tarjeta.getPin())) {
 			esPinValido = true;
 		}
